@@ -1,0 +1,16 @@
+node_modules
+dist
+coverage
+*.log
+.DS_Store
+
+# working notes, never published
+private/
+
+# Its own repository: github.com/high-security/encrypted. The version that
+# belongs in this repo will be a rewrite against @hsfs/core — the existing one
+# imports the old @synet/* port.
+encrypted/
+
+# Internal: our decisions and the reasons behind them. Not published.
+docs/

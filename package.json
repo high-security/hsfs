@@ -1,0 +1,21 @@
+{
+  "name": "hsfs",
+  "private": true,
+  "version": "0.1.0",
+  "description": "High Security File System — the storage infrastructure. One repository; npm workspaces only.",
+  "workspaces": ["core", "adapter-node", "adapter-memory", "vault"],
+  "scripts": {
+    "build": "npm run build -w @hsfs/core && npm run build -w @hsfs/adapter-node && npm run build -w @hsfs/adapter-memory && npm run build -w @hsfs/vault",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "format": "biome format --write ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
