@@ -21,7 +21,7 @@
  * **store** rather than the index, so nothing on disk can be invisible to it: every record is
  * judged on its own, and every disagreement between the index and the files is reported.
  *
- * `README.md` has the reasoning, `../docs/SPEC.md` §8 the design record.
+ * `README.md` has the reasoning.
  */
 
 export {

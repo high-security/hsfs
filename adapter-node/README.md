@@ -28,7 +28,7 @@ async write(path, data) {
 
 That is the whole of it, and it is deliberate. The platform's `writeFile` truncates and then
 writes, so a crash mid-write can leave a torn file — **which is not this class's problem to
-solve.** Durability belongs to whoever owns the data (`docs/SPEC.md` §4).
+solve.** Durability belongs to whoever owns the data — see *Durability* below.
 
 A test asserts that no temporaries ever appear beside a target. If somebody adds an `fsync`
 to a class named after a platform, that test fails and the decision gets made out loud
@@ -62,8 +62,7 @@ including when the path is a directory, so that `read` and `exists` always agree
 
 Not promised here, and not needed by the vault either: a caller that wants certainty pairs
 immutable unique names with a `checksum` and discards what fails to verify. That is a shape
-decision, not a filesystem feature — `docs/SPEC.md` §4, and §3 for the atomic tier we tried
-and removed.
+decision, not a filesystem feature — and it is why there is no atomic tier in this adapter.
 
 ## Requirements
 

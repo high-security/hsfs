@@ -16,7 +16,6 @@ First release.
 - **No second tier.** An `IAtomicFileSystem` was written and removed the same day: a
   contract with no implementer, and `atomicWrite: true` was a label rather than a
   capability. If resilience ever earns its keep it returns as a sibling class, not a flag.
-  See `docs/SPEC.md` §3.
 
 > The port is **not frozen**. This is why the version is `0.x`: it can still move without a
 > breaking change, which is the honest signal for a contract with no consumers yet.

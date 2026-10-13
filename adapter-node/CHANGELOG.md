@@ -11,8 +11,7 @@ First release.
 - **`NodeFileSystem`** — the six port methods over `node:fs`, plus the optional `stat` and
   `chmod`, because a disk has them.
 - **A direct write** — `mkdir` + `writeFile`, and nothing else. No temporaries, no `fsync`.
-  An atomic variant was tried and removed; durability is the caller's business
-  (`../docs/SPEC.md` §3, §4).
+  An atomic variant was tried and removed; durability is the caller's business.
 - **Containment** — paths that escape the root are refused, not normalised.
 - **Zero runtime dependencies** — `node:fs` only.
 - **No sync twin** — async only, deliberately.

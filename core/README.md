@@ -56,7 +56,8 @@ Atomicity was tried and removed the same day: `readonly atomicWrite: true` is a 
 not a capability. The real need is **resilience** — checks against corruption on every
 method — and that is a sibling class for a different use case, not a flag beside one.
 
-`docs/SPEC.md` §3 has the record.
+If resilience ever earns its keep it comes back as a sibling class that checks **every**
+method, not as a flag beside one.
 
 ## Not here
 

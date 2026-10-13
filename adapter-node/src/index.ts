@@ -9,9 +9,8 @@
  * `write` is `mkdir` plus `writeFile`, and that is the whole of it. The platform's
  * `writeFile` truncates and then writes, so a crash mid-write can leave a torn file —
  * **which is not this class's problem to solve.** Durability belongs to whoever owns the
- * data (`docs/SPEC.md` §4), and a store that needs more than this says so by *being* a
- * different, more expensive store — not by quietly adding an `fsync` to a class named
- * after a platform.
+ * data, and a store that needs more than this says so by *being* a different, more expensive
+ * store — not by quietly adding an `fsync` to a class named after a platform.
  */
 
 import {

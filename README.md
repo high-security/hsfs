@@ -4,8 +4,9 @@ Storage infrastructure. A port, adapters for it, and security layers on top.
 
 ```
 core              the ports — types only, zero runtime, zero dependencies
-adapter-node      POSIX. Plain writes; durability is the caller's (§4).
+adapter-node      POSIX. Plain writes; durability is the caller's business.
 adapter-memory    a Map. For tests, and for scratch stores.
+vault             records, indexed — the store the layers attach to
 ```
 
 `@hsfs` holds no identity semantics and never asks for a key. It composes with any domain
@@ -38,9 +39,9 @@ guarantee exists and says nothing about what the store actually does. The real n
 **resilience**: checks against corruption on *every* method, which is a sibling class for a
 different use case, not a flag beside one method.
 
-`docs/SPEC.md` §3 is the record. §4 is the doctrine that made the tier unnecessary —
-durability belongs to whoever owns the data, and it is reachable from shape alone: immutable
-names, a checksum, a rebuildable index.
+The doctrine that made the tier unnecessary is the one that keeps the port small: durability
+belongs to whoever owns the data, and it is reachable from shape alone — immutable names, a
+checksum, a rebuildable index.
 
 ## Working here
 
@@ -55,7 +56,7 @@ npm test
 
 `build` runs before `test` because a dependant resolves its sibling's `dist`.
 
-See `docs/SPEC.md` for the design, the decision log, and what is deliberately not here.
+Each package's README carries the reasoning behind it.
 
 ## License
 

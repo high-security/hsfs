@@ -38,7 +38,7 @@
  * Two processes writing the index at once can lose an update. The damage is bounded (the
  * index is derived, so a rebuild fixes it), but it is not prevented. `proper-lockfile` is the
  * obvious fix on a local disk and cannot work over an object store, which makes it a decision
- * rather than a detail. See `../docs/SPEC.md` §8.
+ * rather than a detail.
  */
 
 import { basename } from "node:path";

@@ -8,16 +8,16 @@
  * There is **one** port. Six methods, async only, and nothing a backend could not honour.
  * If a method cannot be honoured by an object store, it does not belong here.
  *
- * There is deliberately **no second tier**. Atomicity was tried and removed — `docs/SPEC.md`
- * §3 is the record: why a `readonly atomicWrite: true` label was the wrong shape, and what
- * would replace it if resilience ever earns its keep.
+ * There is deliberately **no second tier**. Atomicity was tried and removed: a
+ * `readonly atomicWrite: true` label is the wrong shape, and the real need — resilience — is
+ * a sibling class that checks every method, not a flag beside one.
  *
  * Paths are POSIX-style (`/`-separated) and **relative to whatever root the adapter was
  * given**. Each backend translates: an S3 key, a GitHub path, a `Map` key.
  *
- * See `docs/SPEC.md` for the reasoning, and §4 there for the doctrine that keeps this
- * port small: *the port describes what a store can be asked to do; it never describes how
- * durable the caller's data is.*
+ * `README.md` has the reasoning. The doctrine that keeps this port small: *the port
+ * describes what a store can be asked to do; it never describes how durable the caller's
+ * data is.*
  */
 
 /** What a store can tell you about an object — when it can tell you anything at all. */
@@ -60,7 +60,7 @@ export interface IFileSystem {
    * **Creates any missing parent namespace.** Object stores have no directories, so
    * demanding `ensure` first would be teaching the caller about the disk underneath.
    *
-   * Nothing is promised here about *durability* — see `docs/SPEC.md` §4. A caller that needs
+   * Nothing is promised here about *durability* — see `README.md`. A caller that needs
    * a write it can rely on gets that from the shape of its own writes, not from the port.
    */
   write(path: string, data: string): Promise<void>;

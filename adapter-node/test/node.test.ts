@@ -145,7 +145,7 @@ describe("writing is direct", () => {
 
     // A plain `writeFile` creates no temporaries. If this ever fails, somebody has added
     // durability work to a class named after a platform — and that is a decision to make
-    // out loud, not to discover here. See `docs/SPEC.md` §3.
+    // out loud, not to discover here.
     expect(await readdir(root)).toEqual(["a.json"]);
   });
 
