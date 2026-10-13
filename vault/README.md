@@ -18,11 +18,11 @@ const opened = await Vault.open({
 
 const vault = opened.value;   // check `opened.isSuccess` in real code
 
-await vault.save("urn:synet:IdentityCredential:mg7mq", { did: "did:key:z6Mk…" }, {
+await vault.save("user:alice", { did: "did:key:z6Mk…" }, {
   type: "identity",
 });
 
-const found = await vault.get<{ did: string }>("urn:synet:IdentityCredential:mg7mq");
+const found = await vault.get<{ did: string }>("user:alice");
 if (found.isSuccess) found.value.did;   // "did:key:z6Mk…"
 ```
 
@@ -150,27 +150,6 @@ no id behind — and reporting those, by filename, is what `verify` is for.
 **The checksum covers the whole record** — id, data, metadata, version — over a *stable*
 serialisation while the file itself is written pretty-printed. So reformatting a record by
 hand, which is exactly what recovery is, does not invalidate it.
-
-## Compatibility
-
-The record shape is the previous implementation's, so old records parse. **But every legacy
-record reports `corrupt (checksum)`** — the old checksum was `base64(content).slice(0, 16)`,
-the first twelve bytes of the content re-encoded. It is not a hash, and it never was. It is
-reported rather than silently accepted, and re-saving a record fixes it.
-
-## Three things that are deliberately not here
-
-- **No locking.** Two processes writing `.index.json` can lose an update. The damage is
-  bounded (the index is derived — a rebuild fixes it) but it is not prevented.
-  `proper-lockfile` is the obvious fix on a local disk and cannot work over an object store,
-  so it is a decision, not a detail.
-- **`find` does not report what it skipped.** It returns the matches it could read, and a match
-  that has rotted is absent from the result without saying so. Nothing is unknowable — `list`
-  marks damaged records and `verify` reports them — but `find` returns `U[]` and has nowhere to
-  put a damaged entry, so widening it is an API decision rather than an oversight.
-- **No encryption.** The descriptor *records* that a store is encrypted and how; encrypting is
-  a different package's job. The vault's only duty here is to be honest about what it is
-  looking at.
 
 ## Requirements
 

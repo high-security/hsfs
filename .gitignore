@@ -7,9 +7,7 @@ coverage
 # working notes, never published
 private/
 
-# Its own repository: github.com/high-security/encrypted. The version that
-# belongs in this repo will be a rewrite against @hsfs/core — the existing one
-# imports the old @synet/* port.
+# Its own repository.
 encrypted/
 
 # Internal: our decisions and the reasons behind them. Not published.

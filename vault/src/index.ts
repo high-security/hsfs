@@ -9,9 +9,9 @@
  *
  * if (opened.isSuccess) {
  *   const vault = opened.value;
- *   await vault.save("urn:synet:IdentityCredential:mg7mq", { did: "did:key:z6Mk…" }, { type: "identity" });
+ *   await vault.save("user:alice", { did: "did:key:z6Mk…" }, { type: "identity" });
  *
- *   const found = await vault.get<{ did: string }>("urn:synet:IdentityCredential:mg7mq");
+ *   const found = await vault.get<{ did: string }>("user:alice");
  *   if (found.isSuccess) found.value.did;   // "did:key:z6Mk…"
  * }
  * ```

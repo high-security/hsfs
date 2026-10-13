@@ -9,7 +9,7 @@ npm install @hsfs/adapter-node
 ```ts
 import { NodeFileSystem } from "@hsfs/adapter-node";
 
-const fs = new NodeFileSystem({ root: "~/.synthetism/vault" });
+const fs = new NodeFileSystem({ root: "~/.hsfs/vault" });
 
 await fs.write("1753427840015-ez9omy-identity.vault.json", record);
 await fs.read("1753427840015-ez9omy-identity.vault.json"); // string | undefined

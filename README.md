@@ -8,16 +8,15 @@ adapter-node      POSIX. Plain writes; durability is the caller's (§4).
 adapter-memory    a Map. For tests, and for scratch stores.
 ```
 
-`@hsfs` holds no identity semantics and never asks for a key. `@synthetism` holds no
-storage and never asks where a document lives. An application composes the two; neither
-requires the other.
+`@hsfs` holds no identity semantics and never asks for a key. It composes with any domain
+layer; neither requires the other.
 
 ## The port
 
 Six methods. Async only. Nothing a backend cannot honour.
 
 ```ts
-const fs: IFileSystem = new NodeFileSystem({ root: "~/.synthetism/vault" });
+const fs: IFileSystem = new NodeFileSystem({ root: "~/.hsfs/vault" });
 
 await fs.write("1753427840015-ez9omy-identity.vault.json", record);
 await fs.read("1753427840015-ez9omy-identity.vault.json"); // string | undefined

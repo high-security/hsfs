@@ -164,7 +164,7 @@ describe("find, list, exists, stats, delete", () => {
 
   it("searches metadata only — not ids, exactly as the previous implementation did", async () => {
     const vault = await open<{ n: number }>(memory);
-    const id = "urn:synet:IdentityCredential:aaa";
+    const id = "urn:example:identity:aaa";
     await vault.save(id, { n: 1 }, { type: "identity", alias: "bob" });
 
     expect((await vault.find("bob")).value).toEqual([{ n: 1 }]);
@@ -172,7 +172,7 @@ describe("find, list, exists, stats, delete", () => {
 
     // The old indexer searched *only* metadata, and so does this. An id is a handle you
     // already have: you call `get` with it, you do not search for it. Matching it as a
-    // fragment would make `find("identity")` return every `urn:synet:IdentityCredential:…`.
+    // fragment would make `find("identity")` return every `urn:example:identity:…`.
     expect((await vault.find(id)).value).toEqual([]);
     expect((await vault.find("aaa")).value).toEqual([]);
     expect((await vault.find("nothing")).value).toEqual([]);
