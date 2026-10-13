@@ -31,22 +31,6 @@ every backend spells differently. Everything else throws.
 Optional members (`stat`, `chmod`) are **detected, never assumed** — most backends cannot
 chmod, and requiring it is what rots an adapter ecosystem.
 
-## No second tier
-
-Atomicity was tried (`IAtomicFileSystem`, with a `readonly atomicWrite: true` discriminant)
-and removed the same day. `atomicWrite: true` is a **label**, not a capability — it says a
-guarantee exists and says nothing about what the store actually does. The real need is
-**resilience**: checks against corruption on *every* method, which is a sibling class for a
-different use case, not a flag beside one method.
-
-The doctrine that made the tier unnecessary is the one that keeps the port small: durability
-belongs to whoever owns the data, and it is reachable from shape alone — immutable names, a
-checksum, a rebuildable index.
-
-## Working here
-
-One repository, **npm workspaces only** — no Turborepo, no Nx, no changesets. If a tool is
-needed to make the tool work, the tool is the problem.
 
 ```bash
 npm install

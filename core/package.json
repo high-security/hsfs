@@ -31,11 +31,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/high-security/hsfs.git"
+    "url": "git+https://github.com/high-security/packages.git"
   },
   "homepage": "https://hsfs.dev",
   "bugs": {
-    "url": "https://github.com/high-security/hsfs/issues"
+    "url": "https://github.com/high-security/packages/issues"
   },
   "author": {
     "name": "HSFS",

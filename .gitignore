@@ -4,11 +4,9 @@ coverage
 *.log
 .DS_Store
 
-# working notes, never published
-private/
-
 # Its own repository.
 encrypted/
 
-# Internal: our decisions and the reasons behind them. Not published.
+# Not part of this repo — they live in the hsfs/ container, one level up.
+private/
 docs/
